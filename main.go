@@ -60,7 +60,7 @@ func uploadFile(fileUploaded string) {
 	checkErr(err)
 	defer db.Close()
 
-	file := fmt.Sprintf("/mnt/%s", filepath.Base(fileUploaded))
+	file := fmt.Sprintf("%s", filepath.Base(fileUploaded))
 
 	sql := fmt.Sprintf(`COPY fileUploaded(dados) FROM '%s';`, file)
 	// fmt.Sprintf("Mydirs %s", sql)
