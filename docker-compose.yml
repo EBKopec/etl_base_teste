@@ -9,7 +9,7 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
-      - app-data:/tmp:z
+      - app-data:/tmp/*:z
 
   server:
     build:
@@ -23,7 +23,7 @@ services:
     ports:
       - "10000:10000"
     volumes:
-      - app-data:/build:z
+      - app-data:/build/*:z
 
 volumes:
   data:
