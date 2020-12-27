@@ -60,7 +60,7 @@ func uploadFile(fileUploaded string) {
 	checkErr(err)
 	defer db.Close()
 	fmt.Printf("Estou aqui! \ndir: %s ", fileUploaded)
-	file := fmt.Sprintf("/tmp/%s", filepath.Base(fileUploaded))
+	file := fmt.Sprintf("%s", filepath.Base(fileUploaded))
 	os.Chmod(file, 0777)
 	stats, err := os.Stat(file)
 	if err != nil {
