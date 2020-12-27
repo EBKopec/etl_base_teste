@@ -61,7 +61,13 @@ func uploadFile(fileUploaded string) {
 	defer db.Close()
 
 	file := fmt.Sprintf("/tmp/%s", filepath.Base(fileUploaded))
-	fmt.Println(fileUploaded)
+	os.Chmod(file, 0777)
+	stats, err := os.Stat(file)
+    if err != nil {
+        log.Fatal(err)
+    }
+	fmt.Printf("Permission File After: %s\n", stats.Mode())
+
 	sql := fmt.Sprintf(`COPY fileUploaded(dados) FROM '%s';`, file)
 	// fmt.Sprintf("Mydirs %s", sql)
 	sqlStatement, err := db.Exec(sql)
@@ -110,6 +116,13 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
+	os.Chmod(tempFile.Name(), 0777)
+	stats, err := os.Stat(tempFile.Name())
+    if err != nil {
+        log.Fatal(err)
+    }
+	fmt.Printf("Permission Before: %s\n", stats.Mode())
+
 	tempFile.Write(fileBytes)
 
 	uploadFile(fmt.Sprintf("%s", tempFile.Name()))
