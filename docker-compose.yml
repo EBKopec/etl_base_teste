@@ -9,7 +9,7 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
-      - /mnt:/build
+      - app:/mnt
       
   server:
     build:
@@ -23,6 +23,7 @@ services:
     ports:
       - "10000:10000"
     volumes:
-      - /build:/mnt
+      - app:/build
 volumes:
   data:
+  app:
