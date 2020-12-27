@@ -9,8 +9,8 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
-      - app:/mnt
-      
+      - app-data:/tmp:z
+
   server:
     build:
       context: .
@@ -23,7 +23,8 @@ services:
     ports:
       - "10000:10000"
     volumes:
-      - app:/build
+      - app-data:/build:z
+
 volumes:
   data:
-  app:
+  app-data:
