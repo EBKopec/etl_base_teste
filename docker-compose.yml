@@ -9,6 +9,7 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
+      - ./mnt/file:/build
       
   server:
     build:
@@ -20,6 +21,8 @@ services:
     networks:
       - default
     ports:
-    - "10000:10000"
+      - "10000:10000"
+    volumes:
+      - ./build:/mnt/file
 volumes:
   data:
