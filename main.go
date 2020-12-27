@@ -59,13 +59,13 @@ func uploadFile(fileUploaded string) {
 	db, err := sql.Open("postgres", psqlInfo)
 	checkErr(err)
 	defer db.Close()
-
+	fmt.Printf("Estou aqui! \ndir: %s ", fileUploaded)
 	file := fmt.Sprintf("/tmp/%s", filepath.Base(fileUploaded))
 	os.Chmod(file, 0777)
 	stats, err := os.Stat(file)
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Permission File After: %s\n", stats.Mode())
 
 	sql := fmt.Sprintf(`COPY fileUploaded(dados) FROM '%s';`, file)
@@ -118,9 +118,9 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	}
 	os.Chmod(tempFile.Name(), 0777)
 	stats, err := os.Stat(tempFile.Name())
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Printf("Permission Before: %s\n", stats.Mode())
 
 	tempFile.Write(fileBytes)
