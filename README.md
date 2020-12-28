@@ -35,14 +35,14 @@ e aguardar alguns minutos a aplicação ser instalada.
 O banco de dados será instalado, mas sem objetos, por esta razão é necessario executar os dois arquivos sql em qualquer aplicação que faça conexão com o banco de dados Postgres.
 
 ## Executar os seguintes passos nesta sequência:
-Para se conectar ao banco postgres:
+Para se conectar ao banco nw_base_teste:
 
     host:localhost
     port: 5432
     DB_name: nw_base_teste
     Password: nw2020
 
-Depois de conectado, executar os arquivos:
+## Depois de conectado, executar os arquivos:
 - Functions_triggers.sql (no qual possui comandos DDL para criação de alguns objetos);
 - Tables.sql (para a criação das tables).
 
@@ -52,6 +52,7 @@ Logo após a execução dos arquivos acima.
     localhost:10000
 
 Aparecerá a mensagem de boas vindas.
+
 Isso garante que o serviço está funcionando.
 
 Logo após isso, acessar a URL:
