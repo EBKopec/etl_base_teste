@@ -134,7 +134,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Bem vindo Everton!")
+	fmt.Fprintf(w, "Bem vindo!")
 	fmt.Println("EndPoint hit: HomePage")
 }
 
