@@ -11,7 +11,7 @@ RUN export GO111MOLUDE=on
 RUN go get github.com/EBKopec/etl_base_teste
 RUN cd /build && git clone https://github.com/EBKopec/etl_base_teste.git
 
-RUN cd /build/etl_base_teste && go build
+RUN cd /build/etl_base_teste/ && go build
 
 # RUN ls -ltr /build/*
 RUN ls -ltr /build/etl_base_teste/*
