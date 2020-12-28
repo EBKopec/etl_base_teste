@@ -9,6 +9,8 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
+      - ./Functions_triggers.sql:/docker-entrypoint-initdb.d/Functions_triggers.sql
+      - ./Tables.sql:/docker-entrypoint-initdb.d/Tables.sql
       - app-data:/tmp:z
 
   server:
