@@ -1,7 +1,7 @@
 -- create database 
 -- Caso haja necessidade de criar o banco de dados
 -- executar os comandos abaixo.
-create database nw_base_teste;
+-- create database nw_base_teste;
 
 
 --Function -> Trigger
