@@ -36,10 +36,11 @@ O banco de dados será instalado, mas sem objetos, por esta razão é necessario
 
 ## Executar os seguintes passos nesta sequência:
 Para se conectar ao banco postgres:
-	host: localhost
-	port: 5432
-	DB_name: nw_base_teste
-	Password: nw2020
+
+    host:localhost
+    port: 5432
+    DB_name: nw_base_teste
+    Password: nw2020
 
 Depois de conectado, executar os arquivos:
 - Functions_triggers.sql (no qual possui comandos DDL para criação de alguns objetos);
