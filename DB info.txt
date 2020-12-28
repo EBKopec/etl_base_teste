@@ -1,0 +1,38 @@
+
+	Script - Tables.sql:
+		- base_teste;
+		- base_teste_rejected;
+		- fileuploaded;
+			 Trigger:
+			 - trg_file_uploaded;
+		- fileuploaded_backup.
+
+	Script - Functions_triggers.sql
+	Functions:
+		- fc_usa_trg_base_teste;
+		- fc_converte_money;
+		- fc_remove_acento;
+		- fc_valida_cnpj;
+		- fc_valida_cpf.
+	Domain:
+		- dm_cnpj;
+		- dm_cpf.
+		
+
+Processo:
+Após o upload do arquivo dentro do servidor, no diretório /tmp no qual é compartilhado entre os 2 containers, o script main.go executa o comando COPY para a table `fileuploaded`, onde a trigger `trg_file_uploaded` vai realizar o seguinte processo:
+	- Inserir os dados não nulos na table base_teste;
+	- Inserir os dados nulos na table base_teste_rejected;
+	- Realizar a cópia da table fileuploaded para a table fileuploaded_backup e armazenando o dia da execução do upload;
+
+	As funçoões têm suas utilizações juntamento com a trigger `trg_file_uploaded`. Por sua vez a `fc_usa_trg_base_teste` é responsável por todo o processo.
+	A `fc_converte_money` faz a conversão do dados monetários de texto para real, trocando a vírgula por ponto.
+	A `fc_remove_acento` realiza a conversão de toda acentuação para caracteres sem acentos.
+	As funções `fc_valida_cnpj` e `fc_valida_cpf` são utilizadas para suas respectivas validações e check nas constraints dos Domains `dm_cnpj` e `dm_cpf` respectivamente.
+
+Com isso os dados foram tratados e inseridos em duas tables principais, `base_teste` e `base_teste_rejected`.
+
+
+Os arquivos de criação da tables e demais objetos são estes:
+	-	Tables.sql;
+	- 	Functions_triggers.sql
