@@ -60,7 +60,7 @@ func uploadFile(fileUploaded string) {
 	checkErr(err)
 	defer db.Close()
 	fmt.Printf("Estou aqui! \ndir: %s ", fileUploaded)
-	file := fmt.Sprintf("%s", filepath.Base(fileUploaded))
+	file := fmt.Sprintf("/tmp/%s", filepath.Base(fileUploaded))
 	os.Chmod(file, 0777)
 	stats, err := os.Stat(file)
 	if err != nil {
@@ -102,12 +102,12 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("File Size: %+v\n", handler.Size)
 	fmt.Printf("MIME Header: %+v\n", handler.Header)
 
-	myDir, err := os.Getwd()
-	if err != nil {
-		fmt.Println(err)
-	}
+	// myDir, err := os.Getwd()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 
-	tempFile, err := ioutil.TempFile(fmt.Sprintf("%s", myDir), fmt.Sprintf("*-%s", handler.Filename))
+	tempFile, err := ioutil.TempFile("/tmp/", fmt.Sprintf("*-%s", handler.Filename))
 	if err != nil {
 		fmt.Println(err)
 	}
