@@ -1,8 +1,12 @@
 Pré-requisitos
+
 Docker - v20.10.0
 
-Navegador 
+Navegador
+
 Google Chrome Version 87.0.4280.88 (Official Build) (64-bit)
+
+
 
 # Instruções
 
