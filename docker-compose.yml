@@ -23,7 +23,7 @@ services:
     ports:
       - "10000:10000"
     volumes:
-      - app-data:/build:z
+      - app-data:/tmp:z
 
 volumes:
   data:
